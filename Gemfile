@@ -7,6 +7,7 @@ group :development, :test do
   gem 'sqlite3', '1.3.5'
   gem 'rspec-rails', '2.11.0'
   gem 'guard-rspec', '1.2.1'
+  gem 'bcrypt-ruby', '3.0.1'
 end
 
 # Gems used only for assets and not required
@@ -18,6 +19,7 @@ group :assets do
 end
 
 gem 'jquery-rails', '2.0.2'
+gem 'annotate', '2.5.0', group: :development
 
 # Test gems on Macintosh OS X
 group :test do
