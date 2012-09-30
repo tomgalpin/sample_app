@@ -86,7 +86,8 @@ end
       user_with_same_email = @user.dup
       user_with_same_email.email = @user.email.upcase
       user_with_same_email.save
-    end
+
+  end
 
     it { should_not be_valid }
   end
@@ -111,6 +112,7 @@ end
       specify { user_for_invalid_password.should be_false }
     end
   end
+end
 end
 
 
