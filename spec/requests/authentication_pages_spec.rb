@@ -123,7 +123,7 @@ describe "Authentication" do
           before { delete micropost_path(FactoryGirl.create(:micropost)) }
           specify { response.should redirect_to(signin_url) }
         end
-      end
+      end  
 
       describe "in the Relationships controller" do
         describe "submitting to the create action" do
