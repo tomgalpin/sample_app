@@ -15,7 +15,7 @@ describe "User pages" do
 
     it { should have_selector('title', text: 'All users') }
 
-    describe "pagination" do
+    describe "pagination" do 
       
       before(:all) { 30.times { FactoryGirl.create(:user) } }
       after(:all) { User.delete_all }
@@ -30,7 +30,7 @@ describe "User pages" do
         User.all[0..2].each do |user|
           page.should have_selector('li', text: user.name)
         end
-      end
+      end 
 
       it "should list the first page of users" do
         first_page.each do |user|

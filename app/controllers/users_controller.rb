@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def index
     @users = User.paginate(page: params[:page])
   end
-
+  
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])
@@ -32,7 +32,8 @@ class UsersController < ApplicationController
   def edit
   end
 
-  def update
+def update
+    @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
       flash[:success] = "Profile updated"
       sign_in @user
@@ -47,7 +48,7 @@ class UsersController < ApplicationController
     flash[:success] = "User destroyed."
     redirect_to users_url
   end
-
+ 
   def following
     @title = "Following"
     @user = User.find(params[:id])
@@ -62,14 +63,22 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
-  private
+    private
+
+    def signed_in_user
+      unless signed_in?
+        store_location
+        redirect_to signin_url, notice: "Please sign in."
+      end
+    end
 
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
+      redirect_to(root_path) unless current_user?(@user)
     end
 
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
+        def admin_user
+      redirect_to(root_path) unless current_user.admin?
     end
 end
+
