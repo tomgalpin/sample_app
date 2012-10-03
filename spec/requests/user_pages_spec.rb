@@ -145,6 +145,7 @@ describe "User pages" do
     end
   end
 
+
   describe "signup page" do
     before { visit signup_path }
 
@@ -261,3 +262,4 @@ describe "User pages" do
     end
   end
 end
+
